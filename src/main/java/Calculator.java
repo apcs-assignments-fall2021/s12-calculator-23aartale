@@ -209,7 +209,7 @@ public class Calculator implements ActionListener {
             }
             else if (op.equals("sqrty")){
                 int arg2 = Integer.parseInt(field1.getText());
-                String op2 = "" + Math.pow(arg1, (1/arg2));
+                String op2 = "" + Math.pow(arg1, (1.0/arg2));
                 field1.setText(op2);
             }
         }

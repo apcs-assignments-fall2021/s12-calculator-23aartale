@@ -3,19 +3,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Quadratic {
+
+    public JFrame frame;
+    public LTPanel aPanel, bPanel, cPanel, answerPanel;
+    public JPanel buttonPanel;
+
     public Quadratic() {
         // Set up the frame
-        JFrame frame = new JFrame("Quadratic Formula");
+        frame = new JFrame("Quadratic Formula");
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Set up and add the panels
         JPanel formulaPanel = new JPanel();
-        LTPanel aPanel = new LTPanel("a =", 10);
-        LTPanel bPanel = new LTPanel("b =", 10);
-        LTPanel cPanel = new LTPanel("c =", 10);
-        JPanel buttonPanel = new JPanel();
-        LTPanel answerPanel = new LTPanel("Answer:", 10);
+        aPanel = new LTPanel("a =", 10);
+        bPanel = new LTPanel("b =", 10);
+        cPanel = new LTPanel("c =", 10);
+        buttonPanel = new JPanel();
+        answerPanel = new LTPanel("Answer:", 10);
 
         frame.add(formulaPanel);
         frame.add(aPanel);
@@ -42,10 +47,7 @@ public class Quadratic {
         JButton calculateButton = new JButton("Calculate");
         calculateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                // Potentially a lot of code here
-                // But just add code to call quadForm
-
-                // YOUR CODE HERE
+                quadForm();
             }
         });
 
@@ -58,8 +60,14 @@ public class Quadratic {
     }
 
     public void quadForm() {
-        // YOUR CODE HERE
+        double a = Double.parseDouble(aPanel.getText());
+        double b = Double.parseDouble(bPanel.getText());
+        double c = Double.parseDouble(cPanel.getText());
+        Double ans = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a;
+        String answer = "" + ans;
+        answerPanel.setText(answer);
     }
+
 
     public static void main(String[] args) {
         Quadratic q = new Quadratic();
